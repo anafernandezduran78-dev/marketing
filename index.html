@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marketing · CB Grup Barna × Time Chamber</title>
+<meta name="description" content="Portafoli de màrqueting: reels, cartells, lones i webs del CB Grup Barna i de Time Chamber.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#f6f4f0; --ink:#0a0a0c; --muted:#6b6f76; --line:#e2ded6; --card:#fff; --red:#e31e24; --gold:#b8925a; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111113; --ink:#f3f1ec; --muted:#a3a6ad; --line:#2a2a2e; --card:#1b1b1e; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 Montserrat, system-ui, sans-serif; }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 16px; }
+  header { padding:56px 0 24px; }
+  h1, h2, h3 { font-family:"Bebas Neue", Impact, sans-serif; font-weight:400; letter-spacing:.5px; margin:0; }
+  h1 { font-size:clamp(44px, 8vw, 84px); line-height:.95; }
+  h1 span { color:var(--red); }
+  header p { color:var(--muted); max-width:620px; margin:12px 0 0; }
+  nav { display:flex; gap:8px; flex-wrap:wrap; margin-top:20px; }
+  nav a { border:1px solid var(--line); border-radius:999px; padding:6px 14px; color:var(--ink); text-decoration:none; font-size:14px; }
+  section.ent { padding:32px 0; border-top:1px solid var(--line); }
+  section.ent > h2 { font-size:44px; }
+  .club h2 { color:var(--red); } .tc h2 { color:var(--gold); }
+  h3 { font-size:26px; margin:28px 0 12px; }
+  .grid { display:grid; gap:14px; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); }
+  .grid.wide { grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); }
+  .item { background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .item img, .item video { display:block; width:100%; height:auto; background:#000; }
+  .item video { aspect-ratio:9/16; object-fit:cover; }
+  .item a.file { display:block; padding:28px 14px; text-align:center; color:var(--ink); }
+  .item .cap { padding:8px 12px; font-size:14px; }
+  .links { display:grid; gap:10px; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); }
+  .links a { display:block; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; color:var(--ink); text-decoration:none; }
+  .links a small { display:block; color:var(--muted); }
+  .empty { color:var(--muted); font-size:14px; }
+  footer { padding:32px 0 48px; color:var(--muted); font-size:13px; border-top:1px solid var(--line); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Marketing<br><span>Barna</span> × Time Chamber</h1>
+    <p>Reels, cartells, lones i webs. Selecció de peces fetes per al CB Grup Barna (bàsquet base, Sant Martí, Barcelona) i per a Time Chamber (tecnificació de bàsquet).</p>
+    <nav><a href="#club">CB Grup Barna</a><a href="#tc">Time Chamber</a></nav>
+  </header>
+
+  <section class="ent club" id="club">
+    <h2>CB Grup Barna</h2>
+    <h3>Reels</h3><div class="grid" data-dir="club/reels"></div>
+    <h3>Cartells</h3><div class="grid" data-dir="club/cartells"></div>
+    <h3>Lones de partners</h3><div class="grid wide" data-dir="club/lonas"></div>
+    <h3>On veure-ho en directe</h3>
+    <div class="links">
+      <a href="https://www.instagram.com/cbgrupbarna/" target="_blank" rel="noopener">Instagram @cbgrupbarna<small>Reels i cobertura d'esdeveniments</small></a>
+      <a href="https://cbgrupbarna.com" target="_blank" rel="noopener">cbgrupbarna.com<small>Web del club</small></a>
+      <a href="https://linksbio.cbgrupbarna.info" target="_blank" rel="noopener">linksbio.cbgrupbarna.info<small>Hub d'enllaços</small></a>
+    </div>
+  </section>
+
+  <section class="ent tc" id="tc">
+    <h2>Time Chamber</h2>
+    <h3>Webs</h3>
+    <div class="links">
+      <a href="https://winteredition-timechamber.eu" target="_blank" rel="noopener">winteredition-timechamber.eu<small>Christmas Work · Winter Edition</small></a>
+      <a href="https://campusgrupbarnatimechamber.eu" target="_blank" rel="noopener">campusgrupbarnatimechamber.eu<small>Campus de Nadal CB Grup Barna × Time Chamber</small></a>
+    </div>
+    <h3>Reels</h3><div class="grid" data-dir="time-chamber/reels"></div>
+    <h3>Disseny</h3><div class="grid" data-dir="time-chamber/disseny"></div>
+  </section>
+
+  <footer>Les peces s'actualitzen soles: qualsevol fitxer pujat a les carpetes del repositori apareix aquí.</footer>
+</div>
+
+<script>
+// Llegeix l'arbre del repo (1 sola petició a l'API de GitHub) i pinta cada carpeta.
+const REPO = "anafernandezduran78-dev/marketing";
+const VID = /\.(mp4|mov|webm)$/i, IMG = /\.(png|jpe?g|gif|webp)$/i, DOC = /\.(pdf)$/i;
+const nom = p => decodeURIComponent(p.split("/").pop()).replace(/\.[^.]+$/, "");
+const url = p => p.split("/").map(encodeURIComponent).join("/");
+
+async function arbre() {
+  try { const c = sessionStorage.getItem("arbre"); if (c) return JSON.parse(c); } catch (e) {}
+  const r = await fetch(`https://api.github.com/repos/${REPO}/git/trees/main?recursive=1`);
+  if (!r.ok) throw new Error(r.status);
+  const fitxers = (await r.json()).tree.filter(t => t.type === "blob").map(t => t.path);
+  try { sessionStorage.setItem("arbre", JSON.stringify(fitxers)); } catch (e) {}
+  return fitxers;
+}
+
+function peca(p) {
+  const el = document.createElement("div"); el.className = "item";
+  const u = url(p), n = nom(p);
+  if (VID.test(p)) el.innerHTML = `<video src="${u}#t=0.5" controls playsinline preload="metadata"></video>`;
+  else if (IMG.test(p)) el.innerHTML = `<a href="${u}" target="_blank" rel="noopener"><img src="${u}" alt="" loading="lazy"></a>`;
+  else el.innerHTML = `<a class="file" href="${u}" target="_blank" rel="noopener">📄 Obrir PDF</a>`;
+  const cap = document.createElement("div"); cap.className = "cap"; cap.textContent = n; el.appendChild(cap);
+  return el;
+}
+
+arbre().then(fitxers => {
+  document.querySelectorAll("[data-dir]").forEach(box => {
+    const dir = box.dataset.dir + "/";
+    const meus = fitxers.filter(p => p.startsWith(dir) && !p.slice(dir.length).includes("/") && (VID.test(p) || IMG.test(p) || DOC.test(p)));
+    if (!meus.length) { box.outerHTML = '<p class="empty">Aviat.</p>'; return; }
+    meus.forEach(p => box.appendChild(peca(p)));
+  });
+}).catch(() => document.querySelectorAll("[data-dir]").forEach(b => b.outerHTML = '<p class="empty">No s\'ha pogut carregar. Torna-ho a provar d\'aquí a una estona.</p>'));
+</script>
+</body>
+</html>
